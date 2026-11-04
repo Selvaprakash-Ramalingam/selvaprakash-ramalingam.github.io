@@ -1,0 +1,314 @@
+Here is an HTML/CSS one-page product page for Doomium, a plugin that lets you play DOOM inside Altium Designer 25. It presents download steps, features, system requirements, and troubleshooting guidance in a clean, non-technical layout suited to everyday users.
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Doomium - Play DOOM Inside Altium Designer 25</title>
+<meta name="description" content="Doomium lets you play DOOM inside Altium Designer 25. Download the free Windows plugin and start playing while you design PCBs.">
+<meta name="keywords" content="altium, altium designer, csharp, doom, doom port, dotnet, eda, pcb, pcb design, plugin, plugins">
+<meta name="author" content="Selvaprakash Ramalingam">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#1f2937">
+<link rel="canonical" href="https://github.com/Selvaprakash-Ramalingam/Doomium">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Doomium">
+<meta property="og:title" content="Doomium - Play DOOM Inside Altium Designer 25">
+<meta property="og:description" content="A free plugin that brings the classic DOOM experience into your Altium Designer 25 workspace. Simple download, simple setup, no programming required.">
+<meta property="og:url" content="https://github.com/Selvaprakash-Ramalingam/Doomium/releases">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Doomium - Play DOOM Inside Altium Designer 25">
+<meta name="twitter:description" content="Play DOOM inside Altium Designer 25. Download the free plugin and get started in minutes.">
+
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    padding: 0;
+    background: #f4f6fa;
+    color: #1f2937;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 28px 20px 64px;
+  }
+  .hero {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 36px 28px 32px;
+    box-shadow: 0 10px 30px rgba(17, 24, 39, 0.08);
+    border: 1px solid #e5e9f2;
+    text-align: center;
+    margin-bottom: 34px;
+  }
+  h1 {
+    font-size: 2.05rem;
+    line-height: 1.25;
+    margin: 0 0 14px;
+    letter-spacing: -0.5px;
+    color: #111827;
+  }
+  .tagline {
+    font-size: 1.12rem;
+    color: #4b5563;
+    margin: 0 auto 26px;
+    max-width: 620px;
+  }
+  .badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #7c3aed 0%, #db2777 45%, #f59e0b 100%);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.05rem;
+    padding: 16px 34px;
+    border-radius: 12px;
+    box-shadow: 0 8px 22px rgba(124, 58, 237, 0.35);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(124, 58, 237, 0.45);
+  }
+  .under-badge {
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin: 16px 0 0;
+  }
+  section {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 28px 26px;
+    margin-bottom: 24px;
+    border: 1px solid #e5e9f2;
+    box-shadow: 0 4px 14px rgba(17, 24, 39, 0.05);
+  }
+  h2 {
+    font-size: 1.42rem;
+    margin: 0 0 14px;
+    color: #111827;
+    letter-spacing: -0.3px;
+  }
+  h3 {
+    font-size: 1.06rem;
+    margin: 22px 0 8px;
+    color: #1f2937;
+  }
+  p { margin: 0 0 14px; }
+  p:last-child { margin-bottom: 0; }
+  ul, ol { margin: 0 0 16px; padding-left: 22px; }
+  li { margin-bottom: 9px; }
+  a { color: #6d28d9; }
+  .btn {
+    display: inline-block;
+    background: #dc2626;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 14px 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(220, 38, 38, 0.3);
+    transition: background 0.15s ease;
+  }
+  .btn:hover { background: #b91c1c; }
+  .callout {
+    background: #f5f3ff;
+    border-left: 4px solid #7c3aed;
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin: 18px 0;
+    font-size: 0.98rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 14px;
+    margin-top: 8px;
+  }
+  .card {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 16px 18px;
+  }
+  .card strong { display: block; margin-bottom: 4px; color: #111827; }
+  .card span { font-size: 0.94rem; color: #4b5563; }
+  footer {
+    text-align: center;
+    color: #6b7280;
+    font-size: 0.88rem;
+    padding: 10px 20px 0;
+  }
+  @media (max-width: 560px) {
+    h1 { font-size: 1.6rem; }
+    .hero { padding: 28px 18px; }
+    section { padding: 22px 18px; }
+    .badge { display: block; padding: 15px 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <h1>💀 Doomium - Play DOOM Inside Your PCB Designer</h1>
+    <p class="tagline">A small, free add-on that brings the classic DOOM experience into your Altium Designer 25 workspace.</p>
+    <a class="badge" href="https://github.com/Selvaprakash-Ramalingam/Doomium/releases">⬇️ Download Doomium for Windows</a>
+    <p class="under-badge">Free download · Works with Altium Designer 25 · No programming needed</p>
+  </header>
+
+  <section>
+    <h2>🎯 What Is Doomium?</h2>
+    <p>Doomium is a plugin for Altium Designer 25, the popular software used to design printed circuit boards (PCBs). It adds a small playable window inside the application so you can launch and play the original DOOM while your design tools stay open in the background.</p>
+    <p>You do not need to know anything about programming, code, or electronics to use Doomium. If you can install a normal Windows program and open a menu inside Altium Designer, you can use this plugin. Everything is done with a few clicks.</p>
+    <p>The project is built with C# and the .NET framework, which means it runs as a normal Windows application alongside your existing Altium Designer installation. It does not change your PCB files, your design rules, or your project settings. It simply adds a small extra panel where the game can be played.</p>
+    <div class="callout">
+      <strong>Good to know:</strong> Doomium is a fun side project made for people who already use Altium Designer. It is not a replacement for the software and it is not required for any design work.
+    </div>
+  </section>
+
+  <section>
+    <h2>✨ What You Get</h2>
+    <div class="grid">
+      <div class="card">
+        <strong>Classic DOOM gameplay</strong>
+        <span>The original shooting action, running in a dedicated panel inside Altium Designer 25.</span>
+      </div>
+      <div class="card">
+        <strong>One-click launch</strong>
+        <span>Open the plugin panel and start playing without leaving your design session.</span>
+      </div>
+      <div class="card">
+        <strong>Simple Windows setup</strong>
+        <span>Download, run, and you are done. No configuration files to edit by hand.</span>
+      </div>
+      <div class="card">
+        <strong>Keyboard controls</strong>
+        <span>Use the standard movement and action keys you already know from DOOM.</span>
+      </div>
+      <div class="card">
+        <strong>Lightweight footprint</strong>
+        <span>The plugin is small and stays out of the way when you are not using it.</span>
+      </div>
+      <div class="card">
+        <strong>Open and free</strong>
+        <span>No accounts, no subscriptions, no hidden costs. Just download and play.</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>📥 Download and Install</h2>
+    <p>Everything you need is on the official releases page. Visit this link to download the application.</p>
+    <p style="margin-top:18px;">
+      <a class="btn" href="https://github.com/Selvaprakash-Ramalingam/Doomium/releases">Go to the Doomium download page</a>
+    </p>
+    <h3>Step-by-step</h3>
+    <ol>
+      <li>Click the download button above. Your web browser will open the Doomium releases page on GitHub.</li>
+      <li>On that page, look for the newest release at the top of the list. Newer releases are always listed first.</li>
+      <li>Under the newest release, find the section that lists downloadable files and click the file that matches your Windows computer.</li>
+      <li>Wait for the download to finish. Depending on your internet speed, this usually takes under a minute because the file is small.</li>
+      <li>Open your Downloads folder and double-click the file you just downloaded.</li>
+      <li>Follow the on-screen prompts. If a Windows security window appears asking whether you want to allow the app to run, click the option to allow it.</li>
+      <li>Close Altium Designer completely if it is currently open, then start it again so the new plugin is picked up.</li>
+    </ol>
+    <div class="callout">
+      <strong>Where to find it afterwards:</strong> once Altium Designer 25 restarts, the Doomium panel appears in the application menu area. Open it whenever you want to play, and close it whenever you want to get back to work.
+    </div>
+  </section>
+
+  <section>
+    <h2>🖥️ System Requirements</h2>
+    <p>Doomium is designed to run on ordinary Windows machines alongside Altium Designer. To keep things smooth, your computer should meet the following baseline:</p>
+    <ul>
+      <li><strong>Operating system:</strong> Windows 10 or Windows 11, 64-bit.</li>
+      <li><strong>Altium Designer:</strong> Version 25 installed and activated on the same computer.</li>
+      <li><strong>Software framework:</strong> .NET Framework 4.8 or newer (most Windows 10 and Windows 11 PCs already have this installed).</li>
+      <li><strong>Memory:</strong> 8 GB of RAM or more, in line with the usual recommendations for Altium Designer.</li>
+      <li><strong>Graphics:</strong> A graphics card or integrated graphics chip that supports standard Windows display acceleration.</li>
+      <li><strong>Storage:</strong> A small amount of free disk space, around 100 MB, for the plugin files.</li>
+      <li><strong>Input:</strong> A keyboard and mouse. A numeric keypad is helpful but not required.</li>
+    </ul>
+    <p>If Altium Designer 25 runs comfortably on your computer today, Doomium will run comfortably too. The game panel uses only a small share of your system's resources.</p>
+  </section>
+
+  <section>
+    <h2>🎮 Playing DOOM Inside Altium Designer</h2>
+    <p>Once the plugin is installed and Altium Designer has restarted, playing is straightforward:</p>
+    <ol>
+      <li>Open Altium Designer 25 as you normally would.</li>
+      <li>Locate the Doomium panel or menu entry inside the application. It is usually grouped with the other add-on panels.</li>
+      <li>Click it to open the game window. The first launch may take a few seconds while the game prepares itself.</li>
+      <li>Click inside the game window so it receives your keyboard input.</li>
+      <li>Use the standard DOOM movement keys to walk, turn, and interact, and press the fire key to shoot. The controls are listed inside the panel.</li>
+      <li>To return to your design work, click outside the game window or close the panel. Your Altium Designer workspace is unaffected.</li>
+    </ol>
+    <h3>A few practical tips</h3>
+    <ul>
+      <li>Save your PCB work before you start playing, so a distraction never costs you progress.</li>
+      <li>If your keyboard shortcuts stop responding in Altium Designer while the game is focused, click back into the main application window to regain control.</li>
+      <li>Use a windowed layout if you want to keep an eye on your design while you play.</li>
+      <li>Turn the in-game sound down if you share an office or are on a call.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🔧 Troubleshooting</h2>
+    <h3>The Doomium panel does not appear</h3>
+    <p>Close Altium Designer completely, including any background processes, and start it again. Plugins are only loaded when the application starts up. If the panel still does not show, re-run the file you downloaded and install it once more.</p>
+    <h3>Windows blocks the file from running</h3>
+    <p>Windows sometimes warns about files downloaded from the internet. When the warning appears, choose the option that keeps and allows the file, then run it again. If your organisation manages your computer, you may need to ask your IT department for permission.</p>
+    <h3>The game window opens but the keyboard does not respond</h3>
+    <p>Click once directly inside the game window to give it focus. Altium Designer keeps its own keyboard shortcuts, and the game only receives your key presses when its window is active.</p>
+    <h3>The game runs slowly</h3>
+    <p>Close other heavy applications and background windows. Large PCB projects with many layers can use significant memory, so give the game a little breathing room by closing projects you are not currently working on.</p>
+    <h3>I want to remove Doomium</h3>
+    <p>Uninstall it the same way you installed it, using the uninstall option that came with the downloaded file, or remove it from the Windows list of installed programs. Altium Designer will simply stop showing the panel on its next start.</p>
+  </section>
+
+  <section>
+    <h2>❓ Frequently Asked Questions</h2>
+    <h3>Do I need to pay for Doomium?</h3>
+    <p>No. Doomium is free to download and use from the releases page.</p>
+    <h3>Will Doomium damage my PCB projects?</h3>
+    <p>No. The plugin runs as a separate panel and does not modify your design documents, libraries, or project settings.</p>
+    <h3>Does it work with older versions of Altium Designer?</h3>
+    <p>Doomium is built and tested for Altium Designer 25. Other versions have not been confirmed to work.</p>
+    <h3>Does it work on Mac or Linux?</h3>
+    <p>No. Doomium is a Windows application and requires Altium Designer on Windows.</p>
+    <h3>Can I use it offline?</h3>
+    <p>Yes. Once the plugin is downloaded and installed, no internet connection is needed to play.</p>
+    <h3>How do I get updates?</h3>
+    <p>Visit the releases page from time to time. New versions appear at the top, and you can install them the same way you installed the first one.</p>
+  </section>
+
+  <section>
+    <h2>💬 Feedback and Support</h2>
+    <p>If you run into a problem, the fastest way to get help is to open an issue on the project's GitHub page and describe what happened, including your Windows version and your Altium Designer version. Screenshots are always helpful.</p>
+    <p>Suggestions for new features and improvements are welcome too. Doomium is a community project, and feedback from everyday users is what keeps it improving.</p>
+  </section>
+
+  <section>
+    <h2>📄 License and Credits</h2>
+    <p>Doomium is distributed as a free community project. DOOM is a classic game originally released by id Software, and all original game rights belong to their respective owners. Doomium simply provides a way to run it inside Altium Designer 25.</p>
+    <p>When sharing Doomium with colleagues, please point them to the official releases page rather than re-uploading the files, so everyone gets the latest version.</p>
+  </section>
+
+  <footer>
+    <p>Doomium · Play DOOM inside Altium Designer 25 · Free Windows download</p>
+  </footer>
+
+</div>
+</body>
+</html>
+```
